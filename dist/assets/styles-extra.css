@@ -60,7 +60,7 @@
 .instructor-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 100px; align-items: center; }
 .portrait-wrap { position: relative; max-width: 500px; }
 .portrait-frame { border-radius: 26px 26px 120px 26px; overflow: hidden; aspect-ratio: .92; background: #1b2745; }
-.portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 46% center; }
+.portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
 .portrait-note { position: absolute; right: -35px; bottom: 38px; padding: 17px 20px; background: var(--gold); color: var(--navy); border-radius: 14px; min-width: 190px; box-shadow: 0 20px 50px rgba(0,0,0,.25); }
 .portrait-note b, .portrait-note span { display: block; }
 .portrait-note span { font-size: .78rem; margin-top: 2px; }
@@ -75,6 +75,32 @@
 .credential-row strong, .credential-row span { display: block; }
 .credential-row strong { font: 800 2.35rem "Manrope"; color: var(--gold); }
 .credential-row span { color: rgba(255,255,255,.55); font-size: .85rem; }
+
+.reviews-section { padding: 125px 0 135px; background: var(--paper); overflow: hidden; }
+.reviews-heading { display: grid; grid-template-columns: 1.4fr .6fr; gap: 75px; align-items: end; margin-bottom: 55px; }
+.reviews-heading > div:first-child > .section-index { display: inline-grid; margin-right: 16px; }
+.reviews-heading h2 { font-size: clamp(2.65rem,4.8vw,5rem); letter-spacing: -.055em; max-width: 850px; margin: 25px 0 0; }
+.google-rating { border-left: 1px solid var(--line); padding-left: 34px; display: grid; justify-items: start; }
+.google-word { font: 600 1.1rem "DM Sans", sans-serif; letter-spacing: -.025em; color: #4a4f5e; }
+.google-word i { font-style: normal; font-weight: 800; color: #4285f4; }
+.google-rating > strong { font: 800 1.8rem/1.1 "Manrope"; text-transform: uppercase; letter-spacing: -.02em; margin-top: 13px; }
+.google-rating small { color: var(--muted); font-size: .78rem; margin-top: 5px; }
+.rating-stars { color: #f5b700; letter-spacing: .09em; font-size: 1.08rem; line-height: 1; }
+.google-rating .rating-stars { margin-top: 10px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.review-card { min-height: 350px; display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: #fff; box-shadow: 0 20px 45px rgba(8,17,41,.055); }
+.review-card.featured-review { background: var(--navy); color: #fff; transform: translateY(-12px); box-shadow: 0 28px 60px rgba(8,17,41,.16); }
+.review-card.featured-review.reveal { transform: translateY(12px); }
+.review-card.featured-review.reveal.visible { transform: translateY(-12px); }
+.review-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; }
+.review-avatar { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: var(--navy); font: 800 .78rem "Manrope"; }
+.google-g { font: 800 1.2rem "DM Sans"; color: #4285f4; }
+.review-card blockquote { margin: 28px 0 35px; font: 700 clamp(1.25rem,2vw,1.7rem)/1.45 "Manrope"; letter-spacing: -.025em; }
+.review-card footer { display: flex; flex-direction: column; gap: 2px; margin-top: auto; }
+.review-card footer strong { font-size: .92rem; }
+.review-card footer span { color: var(--muted); font-size: .76rem; }
+.review-card.featured-review footer span { color: rgba(255,255,255,.5); }
+.reviews-source { color: var(--muted); font-size: .78rem; margin: 26px 0 0; }
 
 .safety-section { padding: 125px 0; background: #f0f1ef; }
 .safety-pills { display: flex; gap: 10px; flex-wrap: wrap; margin: -20px 0 35px; }
@@ -120,6 +146,8 @@
 .social-links { display: flex; gap: 9px; }
 .social-links a { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; font-size: .78rem; font-weight: 800; transition: .2s; }
 .social-links a:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.social-links svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.social-links .solid-path, .social-links .solid-dot { fill: currentColor; stroke: none; }
 .footer-bottom { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.12); margin-top: 35px; padding-top: 22px; color: rgba(255,255,255,.4); font-size: .75rem; }
 .whatsapp-float { position: fixed; right: 22px; bottom: 22px; width: 59px; height: 59px; border-radius: 50%; display: grid; place-items: center; background: #25d366; box-shadow: 0 12px 30px rgba(0,0,0,.28); z-index: 25; transition: transform .2s; }
 .whatsapp-float:hover { transform: translateY(-4px) scale(1.03); }
@@ -131,11 +159,12 @@
   .services-grid { grid-template-columns: repeat(2,1fr); }
   .service-card, .service-card:nth-child(4) { grid-column: auto; }
   .method-grid, .instructor-grid, .faq-grid { gap: 55px; }
+  .reviews-heading { grid-template-columns: 1fr .5fr; gap: 45px; }
   .split-heading { grid-template-columns: 1fr; gap: 20px; }
   .difficulty-list { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 760px) {
-  .services-section, .method-section, .difficulties-section, .instructor-section, .safety-section, .faq-section { padding: 85px 0; }
+  .services-section, .method-section, .difficulties-section, .instructor-section, .reviews-section, .safety-section, .faq-section { padding: 85px 0; }
   .services-grid, .method-grid, .instructor-grid, .faq-grid { grid-template-columns: 1fr; }
   .service-card { min-height: 360px; }
   .method-copy, .faq-intro { position: static; }
@@ -152,6 +181,11 @@
   .footer-grid { grid-template-columns: 1fr; gap: 25px; }
   .footer-bottom { gap: 20px; }
   .credential-row { grid-template-columns: 1fr 1fr !important; }
+  .reviews-heading { grid-template-columns: 1fr; gap: 28px; }
+  .google-rating { border-left: 0; border-top: 1px solid var(--line); padding: 25px 0 0; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .review-card { min-height: 310px; }
+  .review-card.featured-review, .review-card.featured-review.reveal.visible { transform: none; }
 }
 @media (max-width: 460px) {
   .section-heading h2, .split-heading h2, .method-copy h2, .faq-intro h2, .instructor-copy h2 { font-size: 2.45rem; }
