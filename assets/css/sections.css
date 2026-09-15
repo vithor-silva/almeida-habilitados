@@ -200,3 +200,25 @@
   .reveal { opacity: 1; transform: none; transition: none; }
   .path-card, .service-card, .gallery-grid img, .whatsapp-float { transition: none; }
 }
+
+/* A altura do destaque acompanha o conteúdo em telas pequenas. */
+@media (max-width: 680px) {
+  .hero {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding-bottom: 48px;
+  }
+
+  .hero-grid {
+    padding-bottom: 0;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.75rem, 13vw, 4.4rem);
+  }
+
+  .hero-panel {
+    margin-bottom: 0;
+  }
+}

@@ -2,11 +2,16 @@
 
 Site institucional da Almeida Direção, com aulas para primeira habilitação e treinamento para condutores habilitados na Grande Florianópolis.
 
+Domínio: [almeidahabilitados.com.br](https://almeidahabilitados.com.br/)
+
 ## Estrutura
 
 ```text
 .
 ├── index.html
+├── llms.txt
+├── robots.txt
+├── sitemap.xml
 └── assets
     ├── css
     │   ├── global.css
